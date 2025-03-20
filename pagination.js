@@ -8,10 +8,11 @@ async function fetchPosts(page) {
       console.log("Rate limit exceeded. Please wait.")
       return
     }
+    
     lastFetchTime = now 
     const url = `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`;
     const res = await fetch(url);
-    if (!response.ok) throw new Error("Failed to fetch data");
+    if (!res.ok) throw new Error("Failed to fetch data");
     const data = await res.json();
     renderPosts(data);
   } catch (error) {
